@@ -1,7 +1,7 @@
 import Head from "next/head";
 import useIDB from "../react-hooks/useIDB";
 import Button from "../components/Button/Button";
-import { initHubApi } from "../tools/nimiq";
+import { APP_NAME, initHubApi } from "../tools/nimiq";
 
 export default function Home() {
   const db = useIDB();
@@ -12,7 +12,7 @@ export default function Home() {
 
   const chooseAddress = async () => {
     const hubApi = initHubApi();
-    const result = await hubApi.chooseAddress({ appName: "CryptoDID" });
+    const result = await hubApi.chooseAddress({ appName: APP_NAME });
     const dbtx = db
       .transaction("addresses", "readwrite")
       .objectStore("addresses");
